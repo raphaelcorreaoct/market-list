@@ -3,6 +3,8 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation"; 
 import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 
 export default function Home() {
@@ -29,11 +31,11 @@ export default function Home() {
         </div>
         <form onSubmit={handleSubmit(login)} className="flex flex-col gap-4">
 
-          <input {...register('email', { required: true })} className="input input-bordered" placeholder="Digite o seu e-mail" required={true} />
-          <input {...register('password', { required: true })} className="input input-bordered" type="password" label="Senha" placeholder="Digite a sua senha" required={true} />
+          <Input {...register('email', { required: true })} className="input input-bordered" placeholder="Digite o seu e-mail" required={true} />
+          <Input {...register('password', { required: true })} className="input input-bordered" type="password" label="Senha" placeholder="Digite a sua senha" required={true} />
 
 
-          <button className="btn btn-primary">Acessar</button>
+          <Button>Acessar</Button>
 
         </form>
 
@@ -44,9 +46,9 @@ export default function Home() {
           </div>
         }
 
-        <div className="divider">OU</div>
+        <div className="m-auto">OU</div>
 
-        <button className="btn btn-outline w-full" onClick={() => signIn('github', { callbackUrl: '/dashboard' })}>Acesse com o GitHub</button>
+        <Button className="btn btn-outline w-full" onClick={() => signIn('github', { callbackUrl: '/dashboard' })}>Acesse com o GitHub</Button>
 
       </div>
 
